@@ -53,6 +53,16 @@ def create_student():
 button_create = tk.Button(root, text='Create', command=create_student)
 button_create.pack(pady=20)
 
+def delete_student():
+    student_id = entry_id.get()
+    cursor.execute('DELETE FROM DB_student WHERE db_student_id = ?', (student_id,))
+    conn.commit()
+    print(f"Student ID {student_id} deleted (if existed).")
+    print('-' * 30)
+
+button_delete = tk.Button(root, text='Delete', command=delete_student)
+button_delete.pack(pady=10)
+
 # def a overview_student()
 # show all records in sqlite
 def overview_student():
